@@ -1,0 +1,21 @@
+p#notice
+  = notice
+p
+  strong
+    | Uid:
+  = @ota_room.uid
+p
+  strong
+    | Status:
+  = @ota_room.status
+p
+  strong
+    | Ota:
+  = @ota_room.ota
+p
+  strong
+    | Room:
+  = @ota_room.room
+= link_to 'Edit', edit_admin_ota_room_path(@ota_room)
+|  | 
+= link_to 'Back', admin_ota_rooms_path

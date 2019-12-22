@@ -1,0 +1,35 @@
+-if notice
+  .alert.alert-primary role="alert"
+    = notice
+h1 OTA-部屋リレーション
+table.table
+  thead.thead-dark
+    tr
+      th
+        | Uid
+      th
+        | Status
+      th
+        | Ota
+      th
+        | Room
+      th[colspan="3"]
+  tbody
+    - @ota_rooms.each do |ota_room|
+      tr
+        td
+          = ota_room.uid
+        td
+          = ota_room.status
+        td
+          = ota_room.ota
+        td
+          = ota_room.room
+        td
+          = link_to 'Show', [:admin, ota_room], class: 'btn btn-primary btn-sm'
+        td
+          = link_to 'Edit', edit_admin_ota_room_path(ota_room), class: 'btn btn-light btn-sm'
+        td
+          = link_to 'Destroy', [:admin, ota_room], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
+
+= paginate @ota_rooms

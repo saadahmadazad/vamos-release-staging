@@ -1,0 +1,38 @@
+= form_with(model: [:admin, booking], local: true) do |form|
+  - if booking.errors.any?
+    #error_explanation
+      h2
+        = pluralize(booking.errors.count, "error")
+        |  prohibited this booking from being saved:
+      ul
+        - booking.errors.full_messages.each do |message|
+          li
+            = message
+  .form-group
+    = form.label :uid
+    = form.text_field :uid, class: 'form-control'
+  .form-group
+    = form.label :status
+    = form.select :status, Booking.statuses_i18n.keys.map { |k| [Booking.statuses_i18n[k], k] }, {}, {class: 'form-control'}
+  .form-group
+    = form.label :checkin
+    br
+    = form.datetime_select :checkin, {}, class: 'form-control dateselect'
+  .form-group
+    = form.label :checkout
+    br
+    = form.date_select :checkout, {}, class: 'form-control dateselect'
+  .form-group
+    = form.label :count_room
+    = form.number_field :count_room, class: 'form-control'
+  .form-group
+    = form.label :price
+    = form.text_field :price, class: 'form-control'
+  .form-group
+    = form.label :price_balance
+    = form.text_field :price_balance, class: 'form-control'
+  .form-group
+    = form.label :price_total
+    = form.text_field :price_total, class: 'form-control'
+  .actions
+    = form.submit class: 'btn btn-primary'

@@ -1,0 +1,91 @@
+-if notice
+  .alert.alert-primary role="alert"
+    = notice
+h1 予約詳細
+table.table.table-striped
+  tr
+    th #
+    td = @booking.id
+  tr
+    th ユーザー
+    td
+      - if @booking.otum
+        - if @booking.otum.user
+          = link_to @booking.otum.user.email, admin_user_path(@booking.otum.user)
+  tr
+    th OTA
+    td
+      - if @booking.otum
+        - case(@booking.otum.provider)
+          - when 'rakuten' then
+            = '楽天トラベル'
+          - when 'booking' then
+            = 'Booking.com'
+          - when 'default' then
+            = 'VAMOS内部予約管理'
+  tr
+    th 施設
+    td
+      - if @booking.otum
+        - if @booking.otum.facility
+          = link_to @booking.otum.facility.name, admin_facility_path(@booking.otum.facility)
+  tr
+    th UID
+    td = @booking.uid
+  tr
+    th ステータス
+    td = @booking.status
+  tr
+    th チェックイン日時
+    td
+      - if @booking.checkin
+        = @booking.checkin.strftime("%Y年%m月%d日 %H:%M")
+  tr
+    th チェックアウト
+    td
+      - if @booking.checkout
+        = @booking.checkout.strftime("%Y年%m月%d日")
+  tr
+    th 部屋数
+    td = @booking.count_room
+  tr
+    th 価格
+    td = @booking.price
+  tr
+    th 現地支払い金額
+    td = @booking.price_balance
+  tr
+    th 総支払額
+    td = @booking.price_total
+  tr
+    th 予約者名
+    td #{@booking.subscriber_name} (#{@booking.subscriber_kana})
+  tr
+    th 予約者お電話番号
+    td = @booking.subscriber_tel
+  tr
+    th 予約者メールアドレス
+    td = @booking.subscriber_email
+  tr
+    th 予約者ご住所
+    td = @booking.subscriber_address
+  tr
+    th 予約日
+    td
+      - if @booking.booking_date
+        = @booking.booking_date.strftime("%Y年%m月%d日")
+  tr
+    th 宿泊者名
+    td #{@booking.guest_name} (#{@booking.guest_kana})
+  tr
+    th お支払い方法
+    td = @booking.payment_method
+  tr
+    th 人数
+    td #{@booking.number_total}名 (男性#{@booking.number_males}名, 女性#{@booking.number_females}名 / 大人#{@booking.number_adults}名, 子供#{@booking.number_children}名)
+  tr
+    th 備考
+    td = @booking.comment
+div class="btn-group" role="group" aria-label="詳細ページメニュー"
+  = link_to '編集', edit_admin_booking_path(@booking), class: 'btn btn-primary'
+  = link_to '一覧に戻る', admin_bookings_path, class: 'btn btn-secondary'

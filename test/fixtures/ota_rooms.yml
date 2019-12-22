@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: MyString
+  status: 1
+  ota: one
+  room: one
+
+two:
+  uid: MyString
+  status: 1
+  ota: two
+  room: two

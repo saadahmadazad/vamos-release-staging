@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: MyString
+  status: 
+  checkin: 2019-06-13 04:13:02
+  checkout: 2019-06-13 04:13:02
+  count_room: 1
+  price: 1.5
+  price_balance: 1.5
+  price_total: 1.5
+
+two:
+  uid: MyString
+  status: 
+  checkin: 2019-06-13 04:13:02
+  checkout: 2019-06-13 04:13:02
+  count_room: 1
+  price: 1.5
+  price_balance: 1.5
+  price_total: 1.5

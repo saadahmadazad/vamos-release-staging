@@ -1,0 +1,21 @@
+= form_with(model: scraping_log, local: true) do |form|
+  - if scraping_log.errors.any?
+    #error_explanation
+      h2
+        = pluralize(scraping_log.errors.count, "error")
+        |  prohibited this scraping_log from being saved:
+      ul
+        - scraping_log.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = form.label :status
+    = form.number_field :status
+  .field
+    = form.label :url
+    = form.text_field :url
+  .field
+    = form.label :crawl_log_id
+    = form.text_field :crawl_log_id
+  .actions
+    = form.submit

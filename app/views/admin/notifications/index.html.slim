@@ -1,0 +1,39 @@
+-if notice
+  .alert.alert-primary role="alert"
+    = notice
+h1 通知
+table.table
+  thead.thead-dark
+    tr
+      th
+        | Target type
+      th
+        | Target
+      th
+        | Type
+      th
+        | Status
+      th
+        | Url
+      th[colspan="3"]
+  tbody
+    - @notifications.each do |notification|
+      tr
+        td
+          = notification.target_type
+        td
+          = notification.target_id
+        td
+          = notification.type
+        td
+          = notification.status
+        td
+          = notification.url
+        td
+          = link_to 'Show', [:admin, notification], class: 'btn btn-primary btn-sm'
+        td
+          = link_to 'Edit', edit_admin_notification_path(notification), class: 'btn btn-light btn-sm'
+        td
+          = link_to 'Destroy', [:admin, notification], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
+
+= paginate @notifications

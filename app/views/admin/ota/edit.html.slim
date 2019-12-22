@@ -1,0 +1,6 @@
+h1 OTAを編集
+= render 'form', otum: @otum
+br
+div class="btn-group" role="group" aria-label="edit group"
+  = link_to '詳細', [:admin, @otum], class: 'btn btn-light'
+  = link_to '戻る', admin_ota_path, class: 'btn btn-secondary'

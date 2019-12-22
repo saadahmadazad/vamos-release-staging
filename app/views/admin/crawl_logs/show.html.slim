@@ -1,0 +1,13 @@
+p#notice
+  = notice
+p
+  strong
+    | Status:
+  = @crawl_log.status
+p
+  strong
+    | Ota room:
+  = @crawl_log.ota_room
+= link_to 'Edit', edit_admin_crawl_log_path(@crawl_log)
+|  | 
+= link_to 'Back', admin_crawl_logs_path

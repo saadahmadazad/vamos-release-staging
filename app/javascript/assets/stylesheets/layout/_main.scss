@@ -1,0 +1,23 @@
+body{
+	margin:0;
+}
+.el-container.is-vertical.main-container {
+    min-height: 100%;
+    -webkit-transition: margin-left .28s;
+    transition: margin-left .28s;
+    margin-left: 210px;
+    position: relative;
+    height: 100vh;
+}
+
+.align-center {
+	text-align: center !important;
+}
+
+.align-left {
+	text-align: left !important;
+}
+
+.align-right {
+	text-align: right !important;
+}

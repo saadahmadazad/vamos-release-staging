@@ -1,0 +1,47 @@
+-if notice
+  .alert.alert-primary role="alert"
+    = notice
+h1 予約
+/ .index-new.text-right
+  = link_to '新規作成', new_admin_booking_path, class: 'btn btn-success'
+table.table
+  thead.thead-dark
+    tr
+      th ID
+      th ユーザー
+      th OTA
+      th 部屋名
+      th 予約者名
+      th ステータス
+      th チェックイン
+      th
+  tbody
+    - @bookings.each do |booking|
+      tr
+        td = booking.id
+        td
+          - if booking.otum.user
+            = link_to admin_user_path(booking.otum.user) do
+              = booking.otum.user.email
+        td
+          - if booking.otum
+            - case(booking.otum.provider)
+              - when 'rakuten' then
+                = '楽天トラベル'
+              - when 'booking' then
+                = 'Booking.com'
+              - when 'default' then
+                = 'VAMOS内部予約管理'
+        td
+          - if booking.ota_room
+            = booking.ota_room.name
+        td = booking.subscriber_name
+        td = booking.status
+        td = booking.checkin.strftime("%Y年%m月%d日")
+        td.text-right
+          div class="btn-group" role="group" aria-label="index group"
+            = link_to '詳細', [:admin, booking], class: 'btn btn-primary btn-sm'
+            = link_to '編集', edit_admin_booking_path(booking), class: 'btn btn-light btn-sm'
+            = link_to '削除', [:admin, booking], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
+
+= paginate @bookings

@@ -1,0 +1,45 @@
+-if notice
+  .alert.alert-primary role="alert"
+    = notice
+h1 OTA詳細
+table.table.table-striped
+  tr
+    th #
+    td = @otum.id
+  tr
+    th OTAプロバイダ
+    td
+      - case(@otum.provider)
+        - when 'rakuten' then
+          = '楽天トラベル'
+        - when 'booking' then
+          = 'Booking.com'
+        - when 'default' then
+          = 'VAMOS内部予約管理'
+  tr
+    th ユーザー
+    td
+      - if @otum.user
+        = link_to @otum.user.email, admin_user_path(@otum.user)
+  tr
+    th 施設
+    td
+      - if @otum.facility
+        = link_to @otum.facility.name, admin_facility_path(@otum.facility)
+  tr
+    th ステータス
+    td = @otum.status
+  tr
+    th アカウント名
+    td = @otum.account
+  tr
+    th 最終クロール日時
+    td
+      - if @otum.last_crawl_at
+        = @otum.last_crawl_at.strftime("%Y年%m月%d日 %H:%M")
+  tr
+    th クロールステータス
+    td = @otum.crowl_status
+div class="btn-group" role="group" aria-label="詳細ページメニュー"
+  = link_to '編集', edit_admin_otum_path(@otum), class: 'btn btn-primary'
+  = link_to '一覧に戻る', admin_ota_path, class: 'btn btn-secondary'

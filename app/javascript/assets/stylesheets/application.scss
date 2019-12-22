@@ -1,0 +1,17 @@
+// ==========================================================================
+// Layout
+// ==========================================================================
+@import 'layout/_aside';
+@import 'layout/_main';
+
+// ==========================================================================
+// vue OSS
+// ==========================================================================
+
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+@import '@fullcalendar/core/main.css';
+@import '@fullcalendar/daygrid/main.css';
+@import '@fullcalendar/timegrid/main.css';
+@import '@fullcalendar/timeline/main.css';
+@import '@fullcalendar/resource-timeline/main.css';

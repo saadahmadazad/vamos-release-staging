@@ -1,0 +1,25 @@
+-if notice
+  .alert.alert-primary role="alert"
+    = notice
+h1 スクレーピングログ
+table.table
+  thead.thead-dark
+    tr
+      th
+        | Status
+      th
+        | Url
+      th
+        | Crawl log
+      th
+  tbody
+    - @scraping_logs.each do |scraping_log|
+      tr
+        td
+          = scraping_log.status
+        td
+          = scraping_log.url
+        td
+          = scraping_log.crawl_log
+        td
+          = link_to 'Show', [:admin, scraping_log], class: 'btn btn-primary btn-sm'

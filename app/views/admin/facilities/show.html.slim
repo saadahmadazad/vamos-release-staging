@@ -1,0 +1,26 @@
+-if notice
+  .alert.alert-primary role="alert"
+    = notice
+h1 施設詳細
+table.table.table-striped
+  tr
+    th #
+    td = @facility.id
+  tr
+    th 施設名
+    td = @facility.name
+  tr
+    th 施設所在地
+    td = @facility.location
+  tr
+    th StripeサブスクリプションID
+    td = @facility.stripe_subscription_id
+  tr
+    th ユーザー
+    td
+      - if @facility.user
+        = link_to admin_user_path(@facility.user) do
+          = @facility.user.email
+div class="btn-group" role="group" aria-label="詳細ページメニュー"
+  = link_to '編集', edit_admin_facility_path(@facility), class: 'btn btn-primary'
+  = link_to '一覧に戻る', admin_facilities_path, class: 'btn btn-secondary'

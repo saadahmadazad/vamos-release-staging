@@ -1,0 +1,23 @@
+-if notice
+  .alert.alert-primary role="alert"
+    = notice
+h1 クロールログ
+table.table
+  thead.thead-dark
+    tr
+      th
+        | Status
+      th
+        | Ota room
+      th
+  tbody
+    - @crawl_logs.each do |crawl_log|
+      tr
+        td
+          = crawl_log.status
+        td
+          = crawl_log.ota_room
+        td
+          = link_to 'Show', [:admin, crawl_log], class: 'btn btn-primary btn-sm'
+
+= paginate @crawl_logs

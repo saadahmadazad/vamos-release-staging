@@ -1,0 +1,114 @@
+# モデル名
+ja:
+  activerecord:
+    models:
+      booking: 予約
+      crawl_log: クローラーログ
+      facility: 施設
+      jwt_blacklist: JWTブラックリスト
+      notification: 通知
+      otum: OTA
+      ota_room: OTA-部屋リレーションシップ
+      room: 部屋
+      scraping_log: スクレーピングログ
+      user: ユーザー
+# モデルの属性名
+    attributes:
+      booking:
+        uid: ユニークID
+        status: ステータス
+        checkin: チェックイン日時
+        checkout: チェックアウト
+        count_room: 部屋数
+        price: 価格
+        price_balance: 現地支払い金額
+        price_total: 総支払額
+        subscriber_name: 予約者名
+        subscriber_kana: 予約者かな
+        subscriber_tel: 予約者電話番号
+        subscriber_email: 予約者メールアドレス
+        subscriber_address: 予約者住所
+        booking_date: 予約日
+        guest_name: 宿泊者名
+        guest_kana: 宿泊者かな
+        payment_method: 支払い方法
+        number_total: 宿泊者数
+        number_males: 男性宿泊者数
+        number_females: 女性宿泊者数
+        number_adults: 大人宿泊者数
+        number_children: 子供宿泊者数
+        currency: 通貨
+        comment: 備考
+        is_blocked: ブロック
+      crawl_log:
+        status: ステータス
+      facility:
+        name: 施設名
+        location: 施設所在地
+      jwt_blacklist:
+      notification:
+        type: 通知タイプ
+        status: ステータス
+        url: URL
+      otum:
+        provider: プロバイダー
+        status: ステータス
+        account: アカウント名
+        password: パスワード
+        token: トークン
+        last_crawl_at: 最終クロール日時
+        crowl_status: クロール状態
+        name: OTA名
+      ota_room:
+        uid: ユニークID
+        status: ステータス
+        name: 名前
+      room:
+        name: 部屋名
+        stock_max: 最大在庫数
+        overbooking_thresh: オーバーブッキング閾値
+        status: ステータス
+        price: 価格
+        currency: 通貨
+      scraping_log:
+        status: ステータス
+        url: URL
+      user:
+        email: メールアドレス
+        password: パスワード
+        name: ユーザー名
+        expired_at: 有効期限
+        role: 権限
+        billing_status: 支払い状況
+  enums:
+    booking:
+      status:
+        active: 予約
+        canceled: キャンセル
+    otum:
+      status:
+        init: 初期状態
+        sync: 同期中
+        active: 正常
+        disactive: 休止中
+        error: エラー
+      crowl_status:
+        init: 初期状態
+        success: 成功
+        warning: 警告
+        error: エラー
+    room:
+      status:
+        active: 有効
+        inactive: 無効
+    user:
+      role:
+        guest: ゲスト
+        user: ユーザー
+        admin: 管理者
+        super_admin: システム管理者
+      billing_status:
+        success: 成功
+        failure: 失敗
+        expired: 期限切れ
+        waiting: 未払い

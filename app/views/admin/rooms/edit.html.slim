@@ -1,0 +1,6 @@
+h1 部屋を編集
+= render 'form', room: @room
+br
+div class="btn-group" role="group" aria-label="edit group"
+  = link_to '詳細', [:admin, @room], class: 'btn btn-light'
+  = link_to '戻る', admin_rooms_path, class: 'btn btn-secondary'

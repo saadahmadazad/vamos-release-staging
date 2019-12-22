@@ -1,0 +1,24 @@
+-if notice
+  .alert.alert-primary role="alert"
+    = notice
+h1 ユーザー
+table.table
+  thead.thead-dark
+    tr
+      th ID
+      th メールアドレス
+      th ユーザー名
+      th
+  tbody
+    - @users.each do |user|
+      tr
+        td = user.id
+        td = user.email
+        td = user.name
+        td.text-right
+          div class="btn-group" role="group" aria-label="index group"
+            = link_to '詳細', [:admin, user], class: 'btn btn-primary btn-sm'
+            = link_to '編集', edit_admin_user_path(user), class: 'btn btn-light btn-sm'
+            = link_to '削除', [:admin, user], method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-danger btn-sm'
+
+= paginate @users

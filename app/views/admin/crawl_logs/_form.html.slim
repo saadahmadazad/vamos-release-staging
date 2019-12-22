@@ -1,0 +1,18 @@
+= form_with(model: [:admin, crawl_log], local: true) do |form|
+  - if crawl_log.errors.any?
+    #error_explanation
+      h2
+        = pluralize(crawl_log.errors.count, "error")
+        |  prohibited this crawl_log from being saved:
+      ul
+        - crawl_log.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = form.label :status
+    = form.number_field :status
+  .field
+    = form.label :ota_room_id
+    = form.text_field :ota_room_id
+  .actions
+    = form.submit

@@ -1,0 +1,25 @@
+p#notice
+  = notice
+p
+  strong
+    | Target type:
+  = @notification.target_type
+p
+  strong
+    | Target:
+  = @notification.target_id
+p
+  strong
+    | Type:
+  = @notification.type
+p
+  strong
+    | Status:
+  = @notification.status
+p
+  strong
+    | Url:
+  = @notification.url
+= link_to 'Edit', edit_admin_notification_path(@notification)
+|  | 
+= link_to 'Back', admin_notifications_path

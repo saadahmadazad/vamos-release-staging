@@ -1,0 +1,24 @@
+= form_with(model: [:admin, facility], local: true) do |form|
+  - if facility.errors.any?
+    #error_explanation
+      h2
+        = pluralize(facility.errors.count, "error")
+        |  prohibited this facility from being saved:
+      ul
+        - facility.errors.full_messages.each do |message|
+          li
+            = message
+  .form-group
+    = form.label :name
+    = form.text_field :name, class: 'form-control'
+  .form-group
+    = form.label :location
+    = form.text_field :location, class: 'form-control'
+  .form-group
+    = form.label :stripe_subscription_id
+    = form.text_field :stripe_subscription_id, class: 'form-control'
+  .form-group
+    = form.label :user_id
+    = form.text_field :user_id, class: 'form-control'
+  .actions
+    = form.submit class: 'btn btn-primary'

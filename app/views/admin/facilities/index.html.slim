@@ -1,0 +1,30 @@
+-if notice
+  .alert.alert-primary role="alert"
+    = notice
+h1 施設
+.index-new.text-right
+  = link_to '新規作成', new_admin_facility_path, class: 'btn btn-success'
+table.table
+  thead.thead-dark
+    tr
+      th ID
+      th ユーザー
+      th 施設名
+      th 施設所在地
+      th
+  tbody
+    - @facilities.each do |facility|
+      tr
+        td = facility.id
+        td
+          - if facility.user
+            = link_to admin_user_path(facility.user) do
+              = facility.user.email
+        td = facility.name
+        td = facility.location
+        td.text-right
+          div class="btn-group" role="group" aria-label="index group"
+            = link_to '詳細', [:admin, facility], class: 'btn btn-primary btn-sm'
+            = link_to '編集', edit_admin_facility_path(facility), class: 'btn btn-light btn-sm'
+            = link_to '削除', [:admin, facility], method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-danger btn-sm'
+= paginate @facilities

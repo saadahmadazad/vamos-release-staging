@@ -1,0 +1,26 @@
+doctype html
+html lang="ja"
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    title
+      - if yield(:title).presence
+        = yield(:title) + ' | ' + '管理画面'
+      - else
+        | 管理画面
+    / = render 'template_parts/favicon'
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    / = analytics_init if Rails.env.production?
+  body class="admin #{controller.controller_name} #{controller.action_name}"
+    = render 'template_parts/admin/header'
+    .container-fluid
+      .row
+        aside.col-md-2.d-none.d-md-block.bg-light.sidebar
+          .sidebar-sticky
+            = render 'template_parts/admin/sidebar'
+        main.col-md-9.ml-sm-auto.col-lg-10.px-4 role="main"
+          .admin-wrapper
+            = yield
+    = render 'template_parts/admin/footer'

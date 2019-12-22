@@ -1,0 +1,52 @@
+version: '3.3'
+services:
+  rails: &app_base
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: site_controller
+    command: /bin/sh -c 'rm -rf tmp/pids/server.pid && rails db:migrate && bundle exec rails s -p 3000 -b 0.0.0.0'
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: webpack
+      WEBPACKER_DEV_SERVER_PUBLIC: 0.0.0.0:3035
+    ports:
+      - "3000:3000"
+    volumes:
+      # - .:/usr/src/app/:cached
+      - .:/usr/src/app/
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
+  webpack:
+    <<: *app_base
+    command: "bin/webpack-dev-server"
+    ports:
+      - "3035:3035"
+    depends_on:
+      - rails
+    tty: false
+    stdin_open: false
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # - .:/usr/src/app/:cached
+      - .:/usr/src/app/
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - .env
+    command: bundle exec sidekiq
+    environment:
+      - ENABLE_BOOTSNAP=false

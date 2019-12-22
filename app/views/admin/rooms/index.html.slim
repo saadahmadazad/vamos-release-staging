@@ -1,0 +1,34 @@
+-if notice
+  .alert.alert-primary role="alert"
+    = notice
+h1 部屋
+.index-new.text-right
+  = link_to '新規作成', new_admin_room_path, class: 'btn btn-success'
+table.table
+  thead.thead-dark
+    tr
+      th ID
+      th 部屋名
+      th ユーザー
+      th 施設名
+      th
+  tbody
+    - @rooms.each do |room|
+      tr
+        td = room.id
+        td = room.name
+        td
+          - if room.user
+            = link_to admin_user_path(room.user) do
+              = room.user.email
+        td
+          - if room.facility
+            = link_to admin_facility_path(room.facility) do
+              = room.facility.name
+        td.text-right
+          div class="btn-group" role="group" aria-label="index group"
+            = link_to '詳細', [:admin, room], class: 'btn btn-primary btn-sm'
+            = link_to '編集', edit_admin_room_path(room), class: 'btn btn-light btn-sm'
+            = link_to '削除', [:admin, room], method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-danger btn-sm'
+
+= paginate @rooms

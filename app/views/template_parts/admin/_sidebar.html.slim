@@ -1,0 +1,47 @@
+ul.nav.flex-column
+  li.nav-item
+    - activate = ( controller.controller_name == 'static_pages' && controller.action_name == 'dashboard' ) ? ' active' : ''
+    = link_to admin_dashboard_path, class: 'nav-link' + activate do
+      = icon('fas', 'home')
+      | dashboard
+
+h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+  span ユーザー
+ul.nav.flex-column.mb-2
+  li.nav-item
+    - activate = ( controller.controller_name == 'users' ) ? ' active' : ''
+    = link_to admin_users_path, class: 'nav-link' + activate do
+      = icon('fas', 'user')
+      | ユーザー管理
+h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+  span コンテンツ
+ul.nav.flex-column.mb-2
+  li.nav-item
+    - activate = ( controller.controller_name == 'facilities' ) ? ' active' : ''
+    = link_to admin_facilities_path, class: 'nav-link' + activate do
+      = icon('fas', 'store-alt')
+      | 施設管理
+  li.nav-item
+    - activate = ( controller.controller_name == 'rooms' ) ? ' active' : ''
+    = link_to admin_rooms_path, class: 'nav-link' + activate do
+      = icon('fas', 'door-closed')
+      | 部屋管理
+  li.nav-item
+    - activate = ( controller.controller_name == 'ota' ) ? ' active' : ''
+    = link_to admin_ota_path, class: 'nav-link' + activate do
+      = icon('fas', 'box')
+      | OTA管理
+  li.nav-item
+    - activate = ( controller.controller_name == 'bookings' ) ? ' active' : ''
+    = link_to admin_bookings_path, class: 'nav-link' + activate do
+      = icon('fas', 'book')
+      | 予約管理
+
+h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+  span システム
+ul.nav.flex-column.mb-2
+  li.nav-item
+    - activate = ( controller.controller_name == 'crawl_logs' ) ? ' active' : ''
+    = link_to admin_crawl_logs_path, class: 'nav-link' + activate do
+      = icon('fas', 'shoe-prints')
+      | クロールログ管理

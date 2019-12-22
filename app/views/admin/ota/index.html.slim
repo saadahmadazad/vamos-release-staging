@@ -1,0 +1,44 @@
+-if notice
+  .alert.alert-primary role="alert"
+    = notice
+h1 OTA
+.index-new.text-right
+  = link_to '新規作成', new_admin_otum_path, class: 'btn btn-success'
+table.table
+  thead.thead-dark
+    tr
+      th ID
+      th ユーザー
+      th 施設名
+      th OTAプロバイダ
+      th ステータス
+      th[colspan="3"]
+  tbody
+    - @ota.each do |otum|
+      tr
+        td = otum.id
+        td
+          - if otum.user
+            = link_to admin_user_path(otum.user) do
+              = otum.user.email
+        td
+          - if otum.facility
+            = link_to admin_facility_path(otum.facility) do
+              = otum.facility.name
+        td
+          - case(otum.provider)
+            - when 'rakuten' then
+              = '楽天トラベル'
+            - when 'booking' then
+              = 'Booking.com'
+            - when 'default' then
+              = 'VAMOS内部予約管理'
+        td
+          = otum.status
+        td.text-right
+          div class="btn-group" role="group" aria-label="index group"
+            = link_to '詳細', [:admin, otum], class: 'btn btn-primary btn-sm'
+            = link_to '編集', edit_admin_otum_path(otum), class: 'btn btn-light btn-sm'
+            = link_to '削除', [:admin, otum], method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-danger btn-sm'
+
+= paginate @ota

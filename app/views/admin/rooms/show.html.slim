@@ -1,0 +1,36 @@
+-if notice
+  .alert.alert-primary role="alert"
+    = notice
+h1 部屋詳細
+table.table.table-striped
+  tr
+    th #
+    td = @room.id
+  tr
+    th 部屋名
+    td = @room.name
+  tr
+    th ユーザー
+    td
+      - if @room.user
+        = link_to @room.user.email, admin_user_path(@room.user)
+  tr
+    th 施設
+    td
+      - if @room.facility
+        = link_to @room.facility.name, admin_facility_path(@room.facility)
+  tr
+    th ステータス
+    td = @room.status
+  tr
+    th 最大在庫数
+    td = @room.stock_max
+  tr
+    th オーバーブッキング閾値
+    td = @room.overbooking_thresh
+  tr
+    th 価格
+    td = @room.price
+div class="btn-group" role="group" aria-label="詳細ページメニュー"
+  = link_to '編集', edit_admin_room_path(@room), class: 'btn btn-primary'
+  = link_to '一覧に戻る', admin_rooms_path, class: 'btn btn-secondary'

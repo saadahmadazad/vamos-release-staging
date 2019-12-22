@@ -1,0 +1,37 @@
+= form_with(model: [:admin, otum], local: true) do |form|
+  - if otum.errors.any?
+    #error_explanation
+      h2
+        = pluralize(otum.errors.count, "error")
+        |  prohibited this otum from being saved:
+      ul
+        - otum.errors.full_messages.each do |message|
+          li
+            = message
+  .form-group
+    = form.label :provider
+    = form.select :provider, [["楽天トラベル", "rakuten"], ["Booking.com", "booking"], ["内部管理用", "OTA"]], {}, class: 'form-control'
+  .form-group
+    = form.label :status
+    = form.select :status, Otum.statuses_i18n.keys.map { |k| [Otum.statuses_i18n[k], k] }, {}, class: 'form-control'
+  .form-group
+    = form.label :account
+    = form.text_field :account, class: 'form-control'
+  .form-group
+    = form.label :password
+    = form.password_field :password, class: 'form-control'
+  .form-group
+    = form.label :last_crawl_at
+    br
+    = form.datetime_select :last_crawl_at, {}, class: 'form-control dateselect'
+  .form-group
+    = form.label :crowl_status
+    = form.select :crowl_status, Otum.crowl_statuses_i18n.keys.map { |k| [Otum.crowl_statuses_i18n[k], k] }, {}, class: 'form-control'
+  .form-group
+    = form.label :name
+    = form.text_field :name, class: 'form-control'
+  .form-group
+    = form.label :facility_id
+    = form.text_field :facility_id, class: 'form-control'
+  .actions
+    = form.submit class: 'btn btn-primary'

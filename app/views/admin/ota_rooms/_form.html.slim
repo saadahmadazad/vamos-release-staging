@@ -1,0 +1,24 @@
+= form_with(model: [:admin, ota_room], local: true) do |form|
+  - if ota_room.errors.any?
+    #error_explanation
+      h2
+        = pluralize(ota_room.errors.count, "error")
+        |  prohibited this ota_room from being saved:
+      ul
+        - ota_room.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = form.label :uid
+    = form.text_field :uid
+  .field
+    = form.label :status
+    = form.number_field :status
+  .field
+    = form.label :ota_id
+    = form.text_field :ota_id
+  .field
+    = form.label :room_id
+    = form.text_field :room_id
+  .actions
+    = form.submit

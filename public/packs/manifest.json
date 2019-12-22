@@ -1,0 +1,16 @@
+{
+  "application.js": "/packs/js/application-2e7833fb661c8dca891a.js",
+  "application.js.map": "/packs/js/application-2e7833fb661c8dca891a.js.map",
+  "entrypoints": {
+    "application": {
+      "js": [
+        "/packs/js/application-2e7833fb661c8dca891a.js"
+      ],
+      "js.map": [
+        "/packs/js/application-2e7833fb661c8dca891a.js.map"
+      ]
+    }
+  },
+  "media/fonts/element-icons.ttf": "/packs/media/fonts/element-icons-732389de.ttf",
+  "media/fonts/element-icons.woff": "/packs/media/fonts/element-icons-535877f5.woff"
+}

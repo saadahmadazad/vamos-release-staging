@@ -1,0 +1,27 @@
+= form_with(model: [:admin, notification], local: true) do |form|
+  - if notification.errors.any?
+    #error_explanation
+      h2
+        = pluralize(notification.errors.count, "error")
+        |  prohibited this notification from being saved:
+      ul
+        - notification.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = form.label :target_type
+    = form.text_field :target_type
+  .field
+    = form.label :target_id
+    = form.number_field :target_id
+  .field
+    = form.label :type
+    = form.text_field :type
+  .field
+    = form.label :status
+    = form.number_field :status
+  .field
+    = form.label :url
+    = form.text_field :url
+  .actions
+    = form.submit

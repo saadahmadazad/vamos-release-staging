@@ -1,0 +1,17 @@
+p#notice
+  = notice
+p
+  strong
+    | Status:
+  = @scraping_log.status
+p
+  strong
+    | Url:
+  = @scraping_log.url
+p
+  strong
+    | Crawl log:
+  = @scraping_log.crawl_log
+= link_to 'Edit', edit_admin_scraping_log_path(@scraping_log)
+|  | 
+= link_to 'Back', admin_scraping_logs_path

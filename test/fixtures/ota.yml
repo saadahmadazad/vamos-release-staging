@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  provider: MyString
+  status: 1
+  account: MyString
+  password: MyString
+  token: MyString
+  last_crawl_at: 2019-06-11 15:56:11
+  crowl_status: 1
+  name: MyString
+  facility: one
+
+two:
+  provider: MyString
+  status: 1
+  account: MyString
+  password: MyString
+  token: MyString
+  last_crawl_at: 2019-06-11 15:56:11
+  crowl_status: 1
+  name: MyString
+  facility: two
