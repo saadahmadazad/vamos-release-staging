@@ -12,7 +12,7 @@
     "@rails/webpacker": "^4.0.7",
     "@websanova/vue-auth": "^2.21.14-beta",
     "actioncable": "^5.2.3",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "element-ui": "^2.9.1",
     "font-awesome": "^4.7.0",
